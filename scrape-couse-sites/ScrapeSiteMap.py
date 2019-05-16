@@ -13,7 +13,8 @@ class SiteMapScrapper:
 			site_robots_file = site_robots_file_raw.replace("\n",",").replace("\r","")
 			site_robots_array = site_robots_file.split(",")
 			site_map_url_pairs = filter(lambda x: "Sitemap" in x, site_robots_array)
-			site_map_url_map = [x.split(":",1)[1] for x in site_map_url_pairs]
+			print site_map_url_pairs
+			site_map_url_map = [x.split(":",1)[1] for x in site_map_url_pairs if len(x.split(":",1))==2]
 		except Exception as e:
 			print(e)
 		return site_map_url_map
